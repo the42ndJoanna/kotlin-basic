@@ -8,20 +8,17 @@ class ColumnUtil {
             throw IllegalArgumentException("The sequence label cannot exceed ZZZ")
         }
 
-        val array = Array(count) { "" }
-        for (index in 0..<count) {
-            var num = start + index
-            val label = StringBuilder()
-
-            while (num > 0) {
-                num--
-                label.append(('A' + (num % 26)))
-                num /= 26
-            }
-            array[index] = label.reverse().toString()
-        }
-
-        return array;
+        return Array(count) { i -> getLabelByNumber(start + i);}
     }
 
+    private fun getLabelByNumber(startIndex: Int): String {
+        val label = StringBuilder()
+        var num = startIndex
+        while (num > 0) {
+            num--
+            label.append(('A' + (num % 26)))
+            num /= 26
+        }
+        return label.reverse().toString()
+    }
 }
