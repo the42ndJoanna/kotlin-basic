@@ -1,3 +1,5 @@
+import com.thoughtworks.kotlin_basic.util.ColumnUtil
+
 fun main() {
     try {
         print("Please enter the start number: ")
@@ -10,6 +12,9 @@ fun main() {
             throw IllegalArgumentException("Both start and count must be greater than zero.")
         }
 
+        val columnUtil = ColumnUtil()
+        val labels = columnUtil.calculateSequenceLabels(start, count)
+        println(labels.joinToString(", "))
     } catch (e: Exception) {
         println("Error: ${e.message}")
     }
